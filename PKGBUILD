@@ -5,6 +5,7 @@ pkgdesc='Daemonize aria2'
 license=('GPL2')
 arch=(any)
 depends=('aria2')
+provides=('aria2c-daemon')
 conflicts=('aria2c-daemon')
 replaces=('aria2c-daemon')
 makedepends=('git')
@@ -14,7 +15,6 @@ source=("git+https://github.com/MikalaiR/aria2d.git")
 md5sums=('SKIP')
 
 package() {
-    msg 'package ...'
     install -D -m600 "${srcdir}/${pkgname}/aria2.conf"     "${pkgdir}/etc/conf.d/aria2.conf"
     install -D -m755 "${srcdir}/${pkgname}/aria2d.service" "${pkgdir}/usr/lib/systemd/system/aria2d.service"
 }
