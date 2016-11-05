@@ -1,14 +1,14 @@
 [Unit]
 Description=Aria2 Service
 Requires=network.target
-After=dhcpcd.service
+After=network.target
 
 [Service]
-Type=forking
+Type=simple
 User=aria2
 Group=aria2
 WorkingDirectory=/var/share/aria2
-ExecStart=/usr/bin/aria2c -D --conf-path=/etc/conf.d/aria2.conf
+ExecStart=/usr/bin/aria2c --conf-path=/etc/conf.d/aria2.conf
 ExecReload=/usr/bin/kill -HUP $MAINPID
 RestartSec=1min
 Restart=on-failure
